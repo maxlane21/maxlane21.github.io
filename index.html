@@ -51,6 +51,10 @@
       font-size: 1rem;
       transition: color 0.3s;
     }
+    aside nav a.active {
+      color: #ffffff;
+      font-weight: 800;
+    }
     main {
       margin-left: 280px;
       padding: 3rem 4rem;
@@ -124,6 +128,27 @@
       }
     }
   </style>
+  <script>
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('aside nav a');
+
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 80) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </head>
 <body>
 
@@ -139,9 +164,6 @@
 </aside>
 
 <main>
-<div style="text-align: center; margin-bottom: 2rem;">
-  <h1 style="font-size: 3rem; margin: 0; color: #457191;">Maxfield Lane</h1>
-</div>
 
 <section id="about">
   <h2>About Me</h2>
@@ -179,9 +201,9 @@
 
   <div class="project">
     <h3>Publications</h3>
-    <p>Published a pair of works, one a statistical analysis of "in the family" men's college basketball coaching hires, and the other a legal analysis of the Establishment Clause and how it relates to college athletics.</p>
+    <p>Published two works: one a statistical analysis of 'in the family' men's college basketball coaching hires, and the other a legal analysis of the Establishment Clause as it relates to college athletics.</p>
     <a href="In%20the%20Family.pdf" class="button" target="_blank">In the Family</a>
-    <a href="Legal.pdf" class="button" target="_blank">Legal Analysis</a>
+<a href="Legal.pdf" class="button" target="_blank">Legal Analysis</a>
   </div>
 </section>
 
